@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:run": "cypress run"
+    "removereports": "rm mochawesome.json && rm -rf mochawesome-report && rm cypress/results/*",
+    "cy:run": "cypress run",
+    "report": "npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json",
+    "mergereports": "npx marge mochawesome.json",
+    "runall": "npm run cy:run && npm run report && npm run mergereports"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^5.1.0"
+    "cypress": "^5.1.0",
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.1.0",
+    "mochawesome-report-generator": "^5.1.0"
   }
 }
